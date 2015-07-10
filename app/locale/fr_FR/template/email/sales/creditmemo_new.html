@@ -15,17 +15,19 @@
 "layout handle=\"sales_email_order_creditmemo_items\" creditmemo=$creditmemo order=$order":"Credit Memo Items Grid",
 "var comment":"Credit Memo Comment"}
 @-->
+
 <!--@styles
-body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
 @-->
 
-{{block type="core/template" template="email/header.phtml"}}
-<h1>Bonjour, {{htmlescape var=$order.getCustomerName()}}</h1>
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+
+<h1>{{block type="cms/block" block_id="email_template_say_hello"}} {{htmlescape var=$order.getCustomerName()}}</h1>
 <p>
     Nous vous remercions pour votre commande auprès de {{var store.getFrontendName()}}.
     Vous pouvez vérifier l'état de votre commande en <a href="{{store url="customer/account/"}}">vous connectant à votre compte</a>.
-    Si vous avez des questions au sujet de votre commande, veuillez nous contacter à l'adresse <a href="mailto:{{config path='trans_email/ident_support/email'}}">{{config path='trans_email/ident_support/email'}}</a> ou nous appeler au <span class="nobr">{{config path='general/store_information/phone'}}</span> du lundi au vendredi, de 8h à 17h.
 </p>
+{{template config_path="design/email/support"}}
 
 <h2>Votre avoir #{{var creditmemo.increment_id}} pour la commande #{{var order.increment_id}}</h2>
 
@@ -77,4 +79,5 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
 {{/depend}}
 {{layout handle="sales_email_order_creditmemo_items" creditmemo=$creditmemo order=$order}}
 <p>{{var comment}}</p>
-{{block type="core/template" template="email/footer.phtml"}}
+
+{{template config_path="design/email/footer"}}

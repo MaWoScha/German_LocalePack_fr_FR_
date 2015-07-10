@@ -15,17 +15,20 @@
 "layout area=\"frontend\" handle=\"sales_email_order_invoice_items\" invoice=$invoice order=$order":"Invoice Items Grid",
 "var comment":"Invoice Comment"}
 @-->
+
 <!--@styles
-body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
 @-->
 
-{{block type="core/template" template="email/header.phtml"}}
-<h1>Bonjour, {{htmlescape var=$order.getCustomerName()}}</h1>
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+
+<h1>{{block type="cms/block" block_id="email_template_say_hello"}} {{htmlescape var=$order.getCustomerName()}}</h1>
 <p>
-    Nous vous remercions pour votre commande auprès de {{var store.getFrontendName()}}. Vous pouvez vérifier l'état de votre commande en.
-    vous connectant à votre compte <a href="{{store url="customer/account/"}}">Si vous avez des questions au sujet de votre commande, veuillez nous contacter à l'adresse</a>.
-    ou nous appeler au <a href="mailto:{{config path='trans_email/ident_support/email'}}">{{config path='trans_email/ident_support/email'}}</a> du lundi au vendredi entre 8h et 17h <span class="nobr">{{config path='general/store_information/phone'}}</span> Votre facture #{{var invoice.increment_id}} pour la commande #{{var order.increment_id}}.
+    Nous vous remercions pour votre commande auprès de {{var store.getFrontendName()}}.
+    Vous pouvez vérifier l'état de votre commande en vous <a href="{{store url="customer/account/"}}">connectant à votre compte</a>.
 </p>
+{{template config_path="design/email/support"}}
+
 <h2>Informations de facturation</h2>
 <table cellspacing="0" cellpadding="0" border="0" width="650">
     <thead>
@@ -74,4 +77,5 @@ body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;
 {{/depend}}
 {{layout area="frontend" handle="sales_email_order_invoice_items" invoice=$invoice order=$order}}
 <p>{{var comment}}</p>
-{{block type="core/template" template="email/footer.phtml"}}
+
+{{template config_path="design/email/footer"}}

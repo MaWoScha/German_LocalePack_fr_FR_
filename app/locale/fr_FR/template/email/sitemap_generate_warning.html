@@ -2,7 +2,9 @@
 <!--@vars
 {"var warnings":"Sitemap Generate Warnings"}
 @-->
-{{block type="core/template" template="email/header.phtml"}}
-Avertissements lors de la génération du plan du site&nbsp;: {{var warnings}}:
+{{template config_path="design/email/header"}}
+
+Avertissements lors de la génération du plan du site&nbsp;: <br />
 {{var warnings}}
-{{block type="core/template" template="email/footer.phtml"}}
+
+{{template config_path="design/email/footer"}}

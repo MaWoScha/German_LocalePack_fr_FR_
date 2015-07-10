@@ -2,10 +2,10 @@
 <!--@vars
 {"var warnings":"Warnings"}
 @-->
-{{block type="core/template" template="email/header.phtml"}}
+{{template config_path="design/email/header"}}
 
-Avertissements lors de l'exécution du script d'alerte de produit&nbsp;: {{var warnings}}:
+Avertissements lors de l'exécution du script d'alerte de produit&nbsp;: <br /><br />
 
 {{var warnings}}
 
-{{block type="core/template" template="email/footer.phtml"}}
+{{template config_path="design/email/footer"}}

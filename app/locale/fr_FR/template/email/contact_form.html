@@ -5,11 +5,15 @@
 "var data.telephone":"Sender Telephone",
 "var data.comment":"Comment"}
 @-->
-{{block type="core/template" template="email/header.phtml"}}
+
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+
 <p>
 Nom&nbsp;: {{var data.name}} <br />
 E-mail&nbsp;: {{var data.email}} <br />
 Téléphone&nbsp;: {{var data.telephone}}<br />
 Commentaire&nbsp;: {{var data.comment}}
 </p>
-{{block type="core/template" template="email/footer.phtml"}}
+
+{{template config_path="design/email/footer"}}

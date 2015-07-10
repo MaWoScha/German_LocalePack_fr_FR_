@@ -10,9 +10,10 @@
 "var message":"Sender Message"}
 @-->
 
-{{block type="core/template" template="email/header.phtml"}}
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
 
-<p>Bonjour {{htmlescape var=$name}},</p>
+<p>{{block type="cms/block" block_id="email_template_say_hello"}} {{htmlescape var=$name}},</p>
 <p>J'ai trouvé ce produit intéressant :</p>
 <p>
 <a href="{{var product_url}}"><img style="border:0;" border="0" src="{{var product_image}}" alt="" /></a><br />
@@ -22,4 +23,5 @@
 Message: <br />
 {{var message}}
 </p>
-{{block type="core/template" template="email/footer.phtml"}}
+
+{{template config_path="design/email/footer"}}

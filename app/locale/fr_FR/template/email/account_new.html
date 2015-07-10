@@ -9,15 +9,17 @@
 @-->
 
 <!--@styles
-body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
 @-->
-{{block type="core/template" template="email/header.phtml"}}
-<h1>Chère/Cher {{htmlescape var=$customer.name}},</h1>
+
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+
+<h1>{{block type="cms/block" block_id="email_template_say_hello"}} {{htmlescape var=$customer.name}},</h1>
 <p>Bienvenue dans {{var store.getFrontendName()}}. Pour vous connecter lorsque vous visitez notre site, il vous suffit de cliquer sur <a href="{{store url="customer/account/"}}">Connexion</a> ou <a href="{{store url="customer/account/"}}">Mon compte</a> en haut de chaque page, puis d'entrer votre adresse e-mail et votre mot de passe.</p>
-<p>
-Utilisez les valeurs suivantes lorsque vous êtes invité(e) à vous connecter:<br/>
+<p>Utilisez les valeurs suivantes lorsque vous êtes invité(e) à vous connecter:<br/>
 <strong>E-mail</strong>: {{var customer.email}}<br/>
 <strong>Mot de passe</strong>: {{htmlescape var=$customer.password}}<p>
-<p>Lorsque vous vous connectez à votre compte, vous pouvez effectuer les opérations suivantes:</p>
-<p>Si vous avez des questions concernant votre compte ou un autre sujet, n'hésitez pas à nous contacter à l'adresse <a href="mailto:{{config path='trans_email/ident_support/email'}}">{{config path='trans_email/ident_support/email'}}</a> ou par téléphone au {{config path='general/store_information/phone'}}.</p>
-{{block type="core/template" template="email/footer.phtml"}}
+<p>Lorsque vous connectez à votre compte, vous pouvez effectuer les opérations suivantes:</p>
+<p>{{block type="cms/block" block_id="email_template_contact"}}</p>
+
+{{template config_path="design/email/footer"}}

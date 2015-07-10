@@ -1,6 +1,6 @@
 <!--@subject {{var subject}} @-->
+{{template config_path="design/email/header"}}
 
-{{block type="core/template" template="email/header.phtml"}}
 <p>
     {{var store.getFrontendName()}}<br>
     Adresse e-mail Moneybookers: {{var email_addr}}<br>
@@ -8,4 +8,5 @@
     URL: {{var url}}<br>
     Langue: {{var language}}<br>
 </p>
-{{block type="core/template" template="email/footer.phtml"}}
+
+{{template config_path="design/email/footer"}}
