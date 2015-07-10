@@ -1,4 +1,4 @@
-<!--@subject Take a look at {{var customer.name}}'s wishlist @-->
+<!--@subject Jetez un oeil à la liste de souhaits du {{var customer.name}} @-->
 <!--@vars
 {"store url=\"\"":"Store Url",
 "var logo_url":"Email Logo Image Url",
@@ -14,10 +14,22 @@
 {{template config_path="design/email/header"}}
 {{inlinecss file="email-inline.css"}}
 
-<p>Bonjour,<br/>Regardez ma liste de souhaits chez {{var store.getFrontendName()}}.</p>
-<p>{{var message}}</p>
-{{var items}}
-<br/>
-{{depend salable}}<p><strong><a href="{{var addAllLink}}">Ajouter tous les articles au panier d'achat</a></strong> |{{/depend}} <strong><a href="{{var viewOnSiteLink}}">Afficher tous les articles de la liste de souhaits</a></strong></p>
+<table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="action-content">
+            <h1>Bonjour,<br/>regardez ma liste de souhaits chez {{var store.getFrontendName()}}.</h1>
+            <table cellspacing="0" cellpadding="0" class="message-container">
+                <tr>
+                    <td>{{var message}}</td>
+                </tr>
+            </table>
+            {{var items}}
+            {{depend salable}}
+            <p><strong><a href="{{var addAllLink}}">Ajouter tous les articles au panier d'achat</a>!</strong> |
+            {{/depend}}
+            <strong><a href="{{var viewOnSiteLink}}">Afficher tous les articles</a>!</strong></p>
+        </td>
+    </tr>
+</table>
 
 {{template config_path="design/email/footer"}}
